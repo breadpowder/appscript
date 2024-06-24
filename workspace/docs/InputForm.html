@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base target="_top">
+    <style>
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+<textarea id="promptInput" placeholder="Type your prompt here..."></textarea>
+<button onclick="submitPrompt()">Submit</button>
+
+<script>
+    function submitPrompt() {
+      const prompt = document.getElementById('promptInput').value;
+      google.script.run
+        .withSuccessHandler(function() {
+          google.script.host.close();
+        })
+        .startSession(prompt);
+    }
+  </script>
+</body>
+</html>
